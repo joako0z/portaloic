@@ -1,0 +1,12 @@
+extends templates/default
+
+block content
+   h1= 'Pagina de Inicio'
+    if isAuthenticated
+      p='Bienvenido '+ user.nombre
+      a(href="http://localhost:3000/users/panel")= 'Perfil'
+      a(href="http://localhost:3000/auth/logout")= 'Cerrar Sesion'
+    if !isAuthenticated
+      a(href="http://localhost:3000/auth/signup")= 'Registrarse'
+      a(href="http://localhost:3000/auth/signin")= 'Iniciar Sesion'
+
