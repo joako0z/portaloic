@@ -19,4 +19,8 @@ router.post('/auth/signin', passport.authenticate('local',{
 router.get('/auth/logout', controllers.UserController.logout);
 router.get('/users/panel', AuthMiddleware.isLogged ,controllers.UserController.getUserPanel);
 
+//oficios
+router.get('/oficios/upload',controllers.OficiosController.upload);
+router.post('/oficios/upload',controllers.OficiosController.guardarOficio);
+
 module.exports = router;

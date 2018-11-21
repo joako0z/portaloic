@@ -7,6 +7,7 @@ var flash = require('connect-flash');
 var session = require ('express-session');
 var passport = require ('passport');
 require('./passport/passport')(passport);
+var fileUpload = require('express-fileupload');
 
 var indexRouter = require('./routes/routes');
 
@@ -17,10 +18,14 @@ secret: 'claveSecretaIDQ',
 resave: false,
 saveUninitialized: false
 }));
+
 app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+//subir archivos
+app.use(fileUpload());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
